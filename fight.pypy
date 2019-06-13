@@ -1,0 +1,34 @@
+#!/usr/bin/pypy
+import sys
+import os
+
+def get_res(player):
+    os.system('source/{} > /tmp/player'.format(player))
+    res_file = open('/tmp/player', 'r')
+    try:
+        res = int(res_file.readline()[:-1])
+        if res < 0 or res > 1:
+            raise ValueError
+    except ValueError:
+        print('Error in {}'.format(player))
+        res = 0
+    return res
+    
+def add_res(player, self_res, enemy_res):
+    target = open('data/{}'.format(player), 'r')
+    n = int(target.readline()[:-1])
+    self_li = target.readline()[:-1]
+    enemy_li = target.readline()[:-1]
+    target.close()
+    target = open('data/{}'.format(player), 'w')
+    target.write('{}\n{} {}\n{} {}\n'.format(n + 1, self_li, self_res, enemy_li, enemy_res))
+    target.close()
+    
+if __name__ == '__main__':
+    playera, playerb = sys.argv[1:3]
+    print('Fight: {} and {}'.format(playera, playerb))
+    resa = get_res(playera)
+    resb = get_res(playerb)
+    add_res(playera, resa, resb)
+    add_res(playerb, resb, resa)
+

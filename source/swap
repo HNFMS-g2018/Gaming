@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+
+data = open('data/swap', 'r')
+n = int(data.readline()[:-1])
+print(n % 2)

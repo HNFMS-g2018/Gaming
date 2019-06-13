@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+data = open('data/copy', 'r')
+n = int(data.readline()[:-1])
+data.readline()
+enemy_li = data.readline()[:-1].split()
+if n == 0:
+    print(1)
+elif n < 7:
+    print(enemy_li[n - 1])
+else:
+    print(0)
