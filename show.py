@@ -4,7 +4,7 @@ import json
 import time
 import colorama
 
-# print('{}', file=open('marks.json', 'w')) # 分数清零
+print('{}', file=open('marks.json', 'w')) # 分数清零
 while True:
     os.system('./run.py 2> /dev/null')
     marks = json.load(open('marks.json', 'r'))
